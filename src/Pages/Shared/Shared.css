@@ -1,0 +1,14 @@
+.parent {
+    padding: 0 5%;
+}
+
+.bg-gradient {
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    color: white;
+}
+
+@media only screen and (max-width: 640px) {
+    .parent {
+        padding: 1%;
+    }
+}
