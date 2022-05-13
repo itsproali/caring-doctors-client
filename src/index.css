@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --primary: #3A4256;
   --secondary: #0FCFEC;
   --accent: #19D3AE;
@@ -16,10 +16,6 @@
 
 body {
   font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
-    
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
