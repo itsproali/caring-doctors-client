@@ -15,7 +15,10 @@ const Contact = () => {
           Stay Connected with us
         </h1>
 
-        <form className="w-full sm:w-1/2 lg:w-1/3 mx-auto" onSubmit={handleSubmit}>
+        <form
+          className="w-full md:w-1/2 mx-auto"
+          onSubmit={handleSubmit}
+        >
           <input
             type="email"
             className="block input w-full border-2 border-transparent focus:border-secondary my-3"
@@ -29,6 +32,8 @@ const Contact = () => {
             required
           />
           <textarea
+            rows="7"
+            name="message"
             className="textarea w-full border-2 border-transparent focus:border-secondary"
             placeholder="Message"
           ></textarea>

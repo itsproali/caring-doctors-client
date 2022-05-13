@@ -11,7 +11,7 @@ const HomeApt = () => {
         <div className="flex-1 hidden lg:block">
           <img className="mt-[-150px]" src={doctor} alt="doctor" />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 px-2 lg:px-0">
           <SectionTitle>Appointment</SectionTitle>
           <h1 className="text-4xl text-white my-4 font-semibold">
             Make an appointment Today
