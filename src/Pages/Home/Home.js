@@ -2,14 +2,16 @@ import React from "react";
 import Banner from "./Banner/Banner";
 import Treatment from "./Treatment";
 import Services from "./Service/Services";
+import HomeApt from "./HomeApt";
 
 const Home = () => {
   return (
-    <div>
+    <section>
       <Banner />
       <Services />
-      <Treatment/>
-    </div>
+      <Treatment />
+      <HomeApt />
+    </section>
   );
 };
 

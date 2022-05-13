@@ -9,7 +9,7 @@ import PrimaryButton from "../../Shared/PrimaryButton";
 
 const Banner = () => {
   return (
-    <div>
+    <section>
       <div className="parent hero min-h-screen bg-bannerImage bg-cover bg-center bg-no-repeat">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
@@ -38,7 +38,7 @@ const Banner = () => {
         <InfoCard img={marker} title="Visit Our Location" color="primary" />
         <InfoCard img={phone} title="Contact Us Now" color="gradient" />
       </div>
-    </div>
+    </section>
   );
 };
 

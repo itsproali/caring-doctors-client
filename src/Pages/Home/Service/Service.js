@@ -7,7 +7,7 @@ const Service = ({ service }) => {
       <figure className="px-10 pt-10">
         <img src={img} alt="Service" className="rounded-xl" />
       </figure>
-      <div className="card-body items-center text-center text-gray-500">
+      <div className="card-body items-center text-center text-neutral">
         <h2 className="card-title">{title}</h2>
         <p>{description}</p>
       </div>
