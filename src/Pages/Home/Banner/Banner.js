@@ -5,11 +5,12 @@ import marker from "../../../assets/icons/marker.svg";
 import clock from "../../../assets/icons/clock.svg";
 import phone from "../../../assets/icons/phone.svg";
 import InfoCard from "./InfoCard";
+import PrimaryButton from "../../Shared/PrimaryButton";
 
 const Banner = () => {
   return (
     <div>
-      <div className="hero parent min-h-screen bg-bannerImage bg-cover bg-center bg-no-repeat">
+      <div className="parent hero min-h-screen bg-bannerImage bg-cover bg-center bg-no-repeat">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
             src={chair}
@@ -25,10 +26,8 @@ const Banner = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <Link to="/">
-              <button className="btn bg-gradient-to-r from-accent to-secondary hover:bg-gradient-to-l text-white border-none font-semibold outline-none duration-500">
-                Get Started
-              </button>
+            <Link to="/appointments">
+              <PrimaryButton>Get Started</PrimaryButton>
             </Link>
           </div>
         </div>
