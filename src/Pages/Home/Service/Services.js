@@ -3,6 +3,7 @@ import Service from "./Service";
 import fluoride from "../../../assets/images/fluoride.png";
 import cavity from "../../../assets/images/cavity.png";
 import whitening from "../../../assets/images/whitening.png";
+import SectionTitle from "../../Shared/SectionTitle";
 
 const Services = () => {
   const services = [
@@ -30,9 +31,7 @@ const Services = () => {
   ];
   return (
     <section className="my-32">
-      <h2 className="text-xl text-secondary uppercase font-semibold text-center">
-        Our Services
-      </h2>
+      <SectionTitle className="text-center">Our Services</SectionTitle>
       <h1 className="text-4xl text-center text-primary my-2">
         Services We Provide
       </h1>

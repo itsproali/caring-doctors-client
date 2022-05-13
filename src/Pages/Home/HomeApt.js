@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import doctor from "../../assets/images/doctor.png";
 import PrimaryButton from "../Shared/PrimaryButton";
+import SectionTitle from "../Shared/SectionTitle";
 
 const HomeApt = () => {
   return (
@@ -11,7 +12,7 @@ const HomeApt = () => {
           <img className="mt-[-150px]" src={doctor} alt="doctor" />
         </div>
         <div className="flex-1">
-          <h3 className="text-accent font-semibold">Appointment</h3>
+          <SectionTitle>Appointment</SectionTitle>
           <h1 className="text-4xl text-white my-4 font-semibold">
             Make an appointment Today
           </h1>

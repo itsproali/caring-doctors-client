@@ -2,7 +2,9 @@ import React from "react";
 import people1 from "../../../assets/images/people1.png";
 import people2 from "../../../assets/images/people2.png";
 import people3 from "../../../assets/images/people3.png";
+import quote from "../../../assets/icons/quote.svg";
 import Testimonial from "./Testimonial";
+import SectionTitle from "../../Shared/SectionTitle";
 
 const Testimonials = () => {
   const testimonials = [
@@ -33,9 +35,14 @@ const Testimonials = () => {
   ];
   return (
     <section className="parent my-16">
-      <h2 className="text-accent font-semibold">Testimonial</h2>
-      <h1 className="text-3xl text-primary my-2">What Our Patients Says</h1>
-      <div className="my-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-16">
+      <div className="flex flex-col sm:flex-row justify-between">
+        <div>
+          <SectionTitle>Testimonials</SectionTitle>
+          <h1 className="text-3xl text-primary my-2">What Our Patients Says</h1>
+        </div>
+        <img className="w-24 md:w-48" src={quote} alt="quote" />
+      </div>
+      <div className="my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {testimonials.map((testimonial) => (
           <Testimonial key={testimonial._id} testimonial={testimonial} />
         ))}
