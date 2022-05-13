@@ -3,6 +3,7 @@ import Banner from "./Banner/Banner";
 import Treatment from "./Treatment";
 import Services from "./Service/Services";
 import HomeApt from "./HomeApt";
+import Testimonials from "./Testimonial/Testimonials";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Services />
       <Treatment />
       <HomeApt />
+      <Testimonials/>
     </section>
   );
 };
