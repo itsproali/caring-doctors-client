@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from "react";
+import AptBanner from "./AptBanner";
+import AvailableApt from "./AvailableApt";
 
 const Appointments = () => {
-    return (
-        <div>
-            <h1>Appoints to our website</h1>
-        </div>
-    );
+  const [date, setDate] = useState(new Date());
+
+  return (
+    <div>
+      <AptBanner date={date} setDate={setDate} />
+      <AvailableApt date={date} />
+    </div>
+  );
 };
 
 export default Appointments;

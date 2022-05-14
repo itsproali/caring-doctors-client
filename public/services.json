@@ -1,0 +1,67 @@
+[
+    {
+        "_id": 1,
+        "title": "Teeth Orthodontics",
+        "slots":[
+            "8.00 AM - 8.30 AM",
+            "8.30 AM - 9.00 AM",
+            "9.00 AM - 9.30 AM",
+            "9.30 AM - 9.00 AM",
+            "10.00 AM - 10.30 AM",
+            "10.30 AM - 11.00 AM"
+        ]
+    },
+    {
+        "_id": 2,
+        "title": "Cosmetic Dentistry",
+        "slots":[
+            "8.00 AM - 8.30 AM",
+            "8.30 AM - 9.00 AM",
+            "9.00 AM - 9.30 AM",
+            "9.30 AM - 9.00 AM",
+            "10.00 AM - 10.30 AM",
+            "10.30 AM - 11.00 AM"
+        ]
+    },
+    {
+        "_id": 3,
+        "title": "Teeth Cleaning",
+        "slots":[
+            "8.00 AM - 8.30 AM",
+            "8.30 AM - 9.00 AM",
+            "9.00 AM - 9.30 AM",
+            "9.30 AM - 9.00 AM",
+            "10.00 AM - 10.30 AM",
+            "10.30 AM - 11.00 AM"
+        ]
+    },
+    {
+        "_id": 4,
+        "title": "Cavity Protection",
+        "slots":[]
+    },
+    {
+        "_id": 5,
+        "title": "Pediatric Dental",
+        "slots":[
+            "8.00 AM - 8.30 AM",
+            "8.30 AM - 9.00 AM",
+            "9.00 AM - 9.30 AM",
+            "9.30 AM - 9.00 AM",
+            "10.00 AM - 10.30 AM",
+            "10.30 AM - 11.00 AM"
+        ]
+    },
+    {
+        "_id": 6,
+        "title": "Oral Surgery",
+        "slots":[
+            "8.00 AM - 8.30 AM",
+            "8.30 AM - 9.00 AM",
+            "9.00 AM - 9.30 AM",
+            "9.30 AM - 9.00 AM",
+            "10.00 AM - 10.30 AM",
+            "10.30 AM - 11.00 AM"
+        ]
+    }
+]
