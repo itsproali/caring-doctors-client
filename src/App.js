@@ -8,6 +8,7 @@ import Reviews from "./Pages/Reviews/Reviews";
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Pages/Login/Login";
 import Footer from "./Pages/Shared/Footer";
+import Loading from "./Pages/Shared/Loading";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
         <Route path="/reviews" element={<Reviews />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/loading" element={<Loading />}></Route>
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
