@@ -9,7 +9,7 @@ import PrimaryButton from "../../Shared/PrimaryButton";
 
 const Banner = () => {
   return (
-    <section>
+    <section className="pt-8">
       <div className="parent hero min-h-screen bg-bannerImage bg-cover bg-center bg-no-repeat">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img

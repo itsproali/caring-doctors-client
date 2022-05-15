@@ -5,6 +5,7 @@ import "react-day-picker/dist/style.css";
 import { format } from "date-fns";
 
 const AptBanner = ({ date, setDate }) => {
+  const today = new Date();
   const css = `
   .selected, selected:active {
     background-color: #19D3AE;
@@ -38,6 +39,7 @@ const AptBanner = ({ date, setDate }) => {
               selected: "selected",
               today: "today",
             }}
+            disabled={{ before: today }}
           />
           {date ? (
             <p className="text-accent">

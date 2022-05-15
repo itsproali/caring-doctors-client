@@ -2,13 +2,41 @@ import { format } from "date-fns";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase-init";
+import { toast } from "react-hot-toast";
 
 const Modal = ({ date, treatment, setTreatment }) => {
   const [user] = useAuthState(auth);
-  const { title, slots } = treatment;
+  const { _id, title, slots } = treatment;
 
   const handleBooking = (e) => {
     e.preventDefault();
+    const booking = {
+      date: format(date, "PP"),
+      treatmentId: _id,
+      treatmentName: title,
+      slot: e.target.slot.value,
+      patientName: e.target.name.value,
+      patientEmail: e.target.email.value,
+      patientId: user.uid,
+    };
+
+    fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          toast.success(`Booking Confirmed for ${data.booking.treatmentName}`);
+        } else {
+          toast.error(`Already has an appointment on ${data.booking.date}`);
+        }
+      });
+
     setTreatment(null);
   };
   return (
@@ -32,6 +60,26 @@ const Modal = ({ date, treatment, setTreatment }) => {
               value={format(date, "PP")}
               disabled
             />
+            <input
+              className="input block w-full my-3 font-medium text-lg border-2 border-gray-300 focus:border-secondary focus:outline-none"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Full Name"
+              value={user?.displayName}
+              disabled
+              required
+            />
+            <input
+              className="input block w-full my-3 font-medium text-lg border-2 border-gray-300 focus:border-secondary focus:outline-none"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              value={user?.email}
+              disabled={user.email}
+              required
+            />
             <select
               name="slot"
               id="slot"
@@ -43,24 +91,6 @@ const Modal = ({ date, treatment, setTreatment }) => {
                 </option>
               ))}
             </select>
-            <input
-              className="input block w-full my-3 font-medium text-lg border-2 border-gray-300 focus:border-secondary focus:outline-none"
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Full Name"
-              defaultValue={user?.displayName}
-              required
-            />
-            <input
-              className="input block w-full my-3 font-medium text-lg border-2 border-gray-300 focus:border-secondary focus:outline-none"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-              defaultValue={user?.email}
-              required
-            />
             <input
               className="input block w-full my-3 font-medium text-lg border-2 border-gray-300 focus:border-secondary focus:outline-none"
               type="number"

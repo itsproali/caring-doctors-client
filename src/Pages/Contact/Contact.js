@@ -9,7 +9,7 @@ const Contact = () => {
 
   return (
     <section className="parent bg-appointment bg-cover bg-center bg-no-repeat">
-      <div className="text-center py-12 px-2">
+      <div className="text-center pt-20 pb-12 px-2">
         <SectionTitle>Contact Us</SectionTitle>
         <h1 className="text-3xl font-semibold my-4 text-white">
           Stay Connected with us

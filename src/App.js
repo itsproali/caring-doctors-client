@@ -12,6 +12,8 @@ import Loading from "./Pages/Shared/Loading";
 import Register from "./Pages/Login/Register";
 import RequireAuth from "./Pages/Login/RequireAuth";
 import { QueryClient, QueryClientProvider } from "react-query";
+import {Toaster} from "react-hot-toast"
+import ScrollToTop from "./Pages/Shared/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,7 @@ function App() {
   return (
     <div className="">
       <QueryClientProvider client={queryClient}>
+        <ScrollToTop/>
         <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -38,6 +41,7 @@ function App() {
           <Route path="/loading" element={<Loading />}></Route>
         </Routes>
         <Footer />
+        <Toaster/>
       </QueryClientProvider>
     </div>
   );

@@ -56,26 +56,16 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
-      <li>
-        {user ? (
-          <button
-            onClick={() => signOut(auth)}
-            className="btn btn-md btn-accent text-white"
-          >
-            LogOut
-          </button>
-        ) : (
-          <NavLink className="btn-md" to="/login">
-            Login
-          </NavLink>
-        )}
-      </li>
     </>
   );
 
   return (
-    <div className="">
-      <div className={`parent navbar bg-base-100 visible ${show && "hidden"}`}>
+    <div
+      className={`parent  duration-500 bg-base-100 visible ${
+        show && "hidden"
+      } ${window.scrollY > 200 && "bg-gray-100 shadow-lg border-b"}`}
+    >
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -105,8 +95,51 @@ const Navbar = () => {
             Caring Doctors
           </Link>
         </div>
-        <div className="navbar-end hidden lg:flex">
+        <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">{navItem}</ul>
+        </div>
+        <div className="navbar-end">
+          {!user ? (
+            <NavLink className="btn" to="/login">
+              Login
+            </NavLink>
+          ) : (
+            <div className="dropdown dropdown-end">
+              <label
+                tabIndex="0"
+                className={`btn btn-circle avatar ${
+                  user.photoURL ? "btn-ghost" : "btn-primary"
+                }`}
+              >
+                <div className="w-10 rounded-full">
+                  {user.photoURL ? (
+                    <img src={user.photoURL} alt="user" />
+                  ) : (
+                    <p className="text-3xl">{user.displayName.slice(0, 1)}</p>
+                  )}
+                </div>
+              </label>
+              <ul
+                tabIndex="0"
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to="/" className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/">Settings</Link>
+                </li>
+                <li>
+                  <Link to="/" onClick={() => signOut(auth)}>
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
