@@ -1,5 +1,7 @@
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import Loading from "../Shared/Loading";
 import SectionTitle from "../Shared/SectionTitle";
 import Modal from "./Modal";
 import Service from "./Service";
@@ -8,12 +10,27 @@ const AvailableApt = ({ date }) => {
   const [services, setServices] = useState([]);
   const [treatment, setTreatment] = useState(null);
 
+  const load = async () => {
+    const response = await fetch("http://localhost:5000/services");
+    return response.json();
+  };
+  
+  const { data, status } = useQuery("services", load);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
+    if (status === "success") {
+      setServices(data);
+    }
+  }, [status, data]);
 
+  if (status === "loading") {
+    return <Loading />;
+  }
+
+  if (status === "error") {
+    return <p className="text-4xl text-red-500">Error ....</p>;
+  }
+
+  console.log(data, status);
   return (
     <section className="parent my-16">
       {date && (

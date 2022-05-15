@@ -1,12 +1,15 @@
 import { format } from "date-fns";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase-init";
 
 const Modal = ({ date, treatment, setTreatment }) => {
+  const [user] = useAuthState(auth);
   const { title, slots } = treatment;
 
   const handleBooking = (e) => {
     e.preventDefault();
-    setTreatment(null)
+    setTreatment(null);
   };
   return (
     <div>
@@ -34,8 +37,8 @@ const Modal = ({ date, treatment, setTreatment }) => {
               id="slot"
               className="select w-full font-medium text-lg my-2 border-2 border-gray-300 focus:border-secondary focus:outline-none"
             >
-              {slots.map((slot) => (
-                <option value={slot} key={slot}>
+              {slots.map((slot, index) => (
+                <option value={slot} key={index}>
                   {slot}
                 </option>
               ))}
@@ -46,6 +49,16 @@ const Modal = ({ date, treatment, setTreatment }) => {
               name="name"
               id="name"
               placeholder="Full Name"
+              defaultValue={user?.displayName}
+              required
+            />
+            <input
+              className="input block w-full my-3 font-medium text-lg border-2 border-gray-300 focus:border-secondary focus:outline-none"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              defaultValue={user?.email}
               required
             />
             <input
@@ -57,27 +70,10 @@ const Modal = ({ date, treatment, setTreatment }) => {
               required
             />
             <input
-              className="input block w-full my-3 font-medium text-lg border-2 border-gray-300 focus:border-secondary focus:outline-none"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-              required
-            />
-            <input
               type="submit"
               value="Submit"
               className="btn w-full btn-accent text-white"
             />
-            {/* <div className="modal-action">
-              <label
-                type="submit"
-                htmlFor="booking-modal"
-                className="btn w-full btn-accent text-white"
-              >
-                Submit
-              </label>
-            </div> */}
           </form>
         </div>
       </div>

@@ -10,25 +10,25 @@ const Navbar = () => {
   const navItem = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink className="btn-md" to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/about">About</NavLink>
+        <NavLink className="btn-md" to="/about">About</NavLink>
       </li>
       <li>
-        <NavLink to="/appointments">Appointments</NavLink>
+        <NavLink className="btn-md" to="/appointments">Appointments</NavLink>
       </li>
       <li>
-        <NavLink to="/reviews">Reviews</NavLink>
+        <NavLink className="btn-md" to="/reviews">Reviews</NavLink>
       </li>
       <li>
-        <NavLink to="/contact">Contact Us</NavLink>
+        <NavLink className="btn-md" to="/contact">Contact Us</NavLink>
       </li>
       <li>
         {user ? (
-          <button onClick={() => signOut(auth)} className="btn btn-accent text-white">LogOut</button>
+          <button onClick={() => signOut(auth)} className="btn btn-md btn-accent text-white">LogOut</button>
         ) : (
-          <NavLink to="/login">Login</NavLink>
+          <NavLink className="btn-md" to="/login">Login</NavLink>
         )}
       </li>
     </>

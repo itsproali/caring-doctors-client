@@ -11,29 +11,34 @@ import Footer from "./Pages/Shared/Footer";
 import Loading from "./Pages/Shared/Loading";
 import Register from "./Pages/Login/Register";
 import RequireAuth from "./Pages/Login/RequireAuth";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <div className="">
-      <Navbar></Navbar>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route
-          path="/appointments"
-          element={
-            <RequireAuth>
-              <Appointments />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route path="/reviews" element={<Reviews />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/loading" element={<Loading />}></Route>
-      </Routes>
-      <Footer />
+      <QueryClientProvider client={queryClient}>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route
+            path="/appointments"
+            element={
+              <RequireAuth>
+                <Appointments />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route path="/reviews" element={<Reviews />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/loading" element={<Loading />}></Route>
+        </Routes>
+        <Footer />
+      </QueryClientProvider>
     </div>
   );
 }
