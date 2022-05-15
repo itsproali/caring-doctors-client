@@ -8,7 +8,7 @@ const HomeApt = () => {
   return (
     <section className="parent bg-appointment mt-32">
       <div className="flex items-center py-6 lg:py-0">
-        <div className="flex-1 hidden lg:block">
+        <div className="flex-1 hidden lg:block ">
           <img className="mt-[-150px]" src={doctor} alt="doctor" />
         </div>
         <div className="flex-1 px-2 lg:px-0">

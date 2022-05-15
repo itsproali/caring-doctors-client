@@ -1,42 +1,81 @@
+import React, { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
-import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink } from "react-router-dom";
 import auth from "../../../firebase-init";
 import "../Shared.css";
+import "./Navbar.css";
 
 const Navbar = () => {
+  const [show, setShow] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const controlNavbar = () => {
+    if (typeof window !== "undefined") {
+      if (window.scrollY > lastScrollY) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+      setLastScrollY(window.scrollY);
+    }
+  };
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", controlNavbar);
+      return () => {
+        window.removeEventListener("scroll", controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+
   const [user] = useAuthState(auth);
   const navItem = (
     <>
       <li>
-        <NavLink className="btn-md" to="/">Home</NavLink>
+        <NavLink className="btn-md" to="/">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink className="btn-md" to="/about">About</NavLink>
+        <NavLink className="btn-md" to="/about">
+          About
+        </NavLink>
       </li>
       <li>
-        <NavLink className="btn-md" to="/appointments">Appointments</NavLink>
+        <NavLink className="btn-md" to="/appointments">
+          Appointments
+        </NavLink>
       </li>
       <li>
-        <NavLink className="btn-md" to="/reviews">Reviews</NavLink>
+        <NavLink className="btn-md" to="/reviews">
+          Reviews
+        </NavLink>
       </li>
       <li>
-        <NavLink className="btn-md" to="/contact">Contact Us</NavLink>
+        <NavLink className="btn-md" to="/contact">
+          Contact Us
+        </NavLink>
       </li>
       <li>
         {user ? (
-          <button onClick={() => signOut(auth)} className="btn btn-md btn-accent text-white">LogOut</button>
+          <button
+            onClick={() => signOut(auth)}
+            className="btn btn-md btn-accent text-white"
+          >
+            LogOut
+          </button>
         ) : (
-          <NavLink className="btn-md" to="/login">Login</NavLink>
+          <NavLink className="btn-md" to="/login">
+            Login
+          </NavLink>
         )}
       </li>
     </>
   );
 
   return (
-    <div>
-      <div className="parent navbar bg-base-100">
+    <div className="">
+      <div className={`parent navbar bg-base-100 visible ${show && "hidden"}`}>
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -63,7 +102,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
-            Doctors Portal
+            Caring Doctors
           </Link>
         </div>
         <div className="navbar-end hidden lg:flex">

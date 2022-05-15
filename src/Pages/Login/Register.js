@@ -24,7 +24,6 @@ const Register = () => {
 
   useEffect(() => {
     if (user) {
-      console.log(user);
       navigate(from, { replace: true });
     }
   }, [navigate, from, user]);
@@ -34,14 +33,13 @@ const Register = () => {
   }
 
   const onSubmit = async (data) => {
-    console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="flex min-h-screen items-center justify-center mt-16">
+      <div className="card w-96 bg-base-100 shadow-xl border">
         <div className="card-body">
           <h2 className="text-center text-3xl font-semibold">Register</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -151,7 +149,7 @@ const Register = () => {
             />
           </form>
 
-          <p className="text-center mt-2">
+          <p className="text-center mt-2 text-sm">
             Already have an account?
             <Link to="/login" className="text-accent">
               {" "}

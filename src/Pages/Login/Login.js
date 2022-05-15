@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import auth from "../../firebase-init";
@@ -12,31 +15,41 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, resetError] =
+    useSendPasswordResetEmail(auth);
+
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm();
 
   useEffect(() => {
     if (user) {
-      console.log(user);
       navigate(from, { replace: true });
     }
   }, [navigate, from, user]);
 
-  if (loading) {
+  if (loading || sending) {
     return <Loading />;
   }
 
   const onSubmit = (data) => {
-    console.log(data);
     signInWithEmailAndPassword(data.email, data.password);
   };
 
+  const handleResetPassword = () => {
+    const resetEmail = getValues("email");
+    if (resetEmail !== "" && !resetError) {
+      sendPasswordResetEmail(resetEmail);
+    } else {
+      window.alert("Something Went wrong");
+    }
+  };
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="flex min-h-screen items-center justify-center mt-10">
+      <div className="card w-96 bg-base-100 shadow-xl border">
         <div className="card-body">
           <h2 className="text-center text-3xl font-semibold">Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -96,10 +109,20 @@ const Login = () => {
                     {errors.password.message}
                   </span>
                 )}
+                <span
+                  className="text-accent cursor-pointer text-xs hover:underline mb-2"
+                  onClick={handleResetPassword}
+                >
+                  Forgot Password?
+                </span>
               </label>
             </div>
 
+            {/* <label htmlFor="forgetPassword" className="label">
+            </label> */}
+
             {error && <p className="text-red-500">{error.message}</p>}
+            {resetError && <p className="text-red-500">{resetError.message}</p>}
 
             <input
               className="btn w-full btn-primary text-white"
@@ -108,7 +131,7 @@ const Login = () => {
             />
           </form>
 
-          <p className="text-center mt-2">
+          <p className="text-center mt-2 text-sm">
             Don't have an account?
             <Link to="/register" className="text-accent">
               {" "}

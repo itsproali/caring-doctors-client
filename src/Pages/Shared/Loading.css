@@ -6,10 +6,10 @@
 .p::after {
     content: "";
     position: absolute;
-    border: 3px solid rgb(77, 148, 255);
+    border: 3px solid var(--accent);
     border-radius: 50%;
-    animation: perant 2.5s linear infinite;
-    -webkit-animation: perant 2.5s linear infinite;
+    animation: parent 2.5s linear infinite;
+    -webkit-animation: parent 2.5s linear infinite;
 }
 
 .p::before {
@@ -32,7 +32,7 @@
     animation-direction: reverse;
 }
 
-@keyframes perant {
+@keyframes parent {
     100% {
         transform: rotate(360deg);
         -webkit-transform: rotate(360deg);

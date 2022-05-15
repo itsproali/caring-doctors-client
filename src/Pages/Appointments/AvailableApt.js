@@ -11,7 +11,7 @@ const AvailableApt = ({ date }) => {
   const [treatment, setTreatment] = useState(null);
 
   const load = async () => {
-    const response = await fetch("http://localhost:5000/services");
+    const response = await fetch("https://caring-doctors-portal.herokuapp.com/services");
     return response.json();
   };
   
@@ -30,7 +30,6 @@ const AvailableApt = ({ date }) => {
     return <p className="text-4xl text-red-500">Error ....</p>;
   }
 
-  console.log(data, status);
   return (
     <section className="parent my-16">
       {date && (
