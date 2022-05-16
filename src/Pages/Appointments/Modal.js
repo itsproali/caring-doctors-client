@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase-init";
 import { toast } from "react-hot-toast";
 
-const Modal = ({ date, treatment, setTreatment }) => {
+const Modal = ({ date, treatment, setTreatment, refetch }) => {
   const [user] = useAuthState(auth);
   const { _id, title, slots } = treatment;
 
@@ -20,7 +20,7 @@ const Modal = ({ date, treatment, setTreatment }) => {
       patientId: user.uid,
     };
 
-    fetch("http://localhost:5000/booking", {
+    fetch("https://caring-doctors-portal.herokuapp.com//booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,6 +35,7 @@ const Modal = ({ date, treatment, setTreatment }) => {
         } else {
           toast.error(`Already has an appointment on ${data.booking.date}`);
         }
+        refetch();
       });
 
     setTreatment(null);

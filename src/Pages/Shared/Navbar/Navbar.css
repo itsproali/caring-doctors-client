@@ -1,6 +1,5 @@
 .visible {
     top: 0px;
-    transition: 0.3s linear;
     z-index: 40;
     position: fixed;
     width: 100%;
@@ -8,5 +7,4 @@
 
 .hidden {
     top: -80px;
-    transition: 0.3s linear;
 }

@@ -13,6 +13,8 @@ const Banner = () => {
       <div className="parent hero min-h-screen bg-bannerImage bg-cover bg-center bg-no-repeat">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
+            data-aos="zoom-in-left"
+            data-aos-duration="1000"
             src={chair}
             className="w-full rounded-lg shadow-2xl"
             alt="Chair"

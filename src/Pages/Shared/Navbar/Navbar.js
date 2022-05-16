@@ -61,11 +61,13 @@ const Navbar = () => {
 
   return (
     <div
-      className={`parent  duration-500 bg-base-100 visible ${
-        show && "hidden"
-      } ${window.scrollY > 200 && "bg-gray-100 shadow-lg border-b"}`}
+      data-aos="fade-down"
+      data-aos-duration="500"
+      className={`parent  bg-base-100 visible ${show && "hidden"} ${
+        window.scrollY > 200 && "bg-gray-100 shadow-lg border-b"
+      }`}
     >
-      <div className="navbar">
+      <div className={`navbar`}>
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -121,7 +123,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex="0"
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52"
               >
                 <li>
                   <Link to="/" className="justify-between">
@@ -133,9 +135,12 @@ const Navbar = () => {
                   <Link to="/">Settings</Link>
                 </li>
                 <li>
-                  <Link to="/" onClick={() => signOut(auth)}>
+                  <button
+                    className="btn btn-accent btn-sm text-white"
+                    onClick={() => signOut(auth)}
+                  >
                     Logout
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </div>

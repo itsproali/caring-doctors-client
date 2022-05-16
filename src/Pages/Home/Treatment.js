@@ -8,11 +8,17 @@ const Treatment = () => {
     <div className="parent hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row justify-between">
         <img
+          data-aos="fade-up"
+          data-aos-duration="1000"
           className="max-w-sm w-full mx-auto rounded-lg shadow-2xl"
           src={treatment}
           alt="Treatment"
         />
-        <div className="md:w-1/2 text-primary">
+        <div
+          data-aos="fade-down"
+          data-aos-duration="1000"
+          className="md:w-1/2 text-primary"
+        >
           <h1 className="text-4xl font-bold">
             Exceptional Dental Care, on Your Terms
           </h1>

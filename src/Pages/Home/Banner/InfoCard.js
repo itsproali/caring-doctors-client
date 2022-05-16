@@ -3,6 +3,8 @@ import React from "react";
 const InfoCard = ({ img, title, color }) => {
   return (
     <div
+      data-aos="flip-up"
+      data-aos-duration="1000"
       className={`${
         color === "gradient"
           ? "bg-gradient-to-r from-accent to-secondary"

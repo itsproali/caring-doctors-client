@@ -1,33 +1,36 @@
 import { format } from "date-fns";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import SectionTitle from "../Shared/SectionTitle";
 import Modal from "./Modal";
 import Service from "./Service";
+import { toast } from "react-hot-toast";
 
 const AvailableApt = ({ date }) => {
-  const [services, setServices] = useState([]);
   const [treatment, setTreatment] = useState(null);
 
-  const load = async () => {
-    const response = await fetch("https://caring-doctors-portal.herokuapp.com/services");
-    return response.json();
-  };
-  
-  const { data, status } = useQuery("services", load);
-  useEffect(() => {
-    if (status === "success") {
-      setServices(data);
-    }
-  }, [status, data]);
+  const {
+    data: services,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useQuery(["available", date], () =>
+    fetch(
+      `https://caring-doctors-portal.herokuapp.com//available?date=${format(
+        date,
+        "PP"
+      )}`
+    ).then((res) => res.json())
+  );
 
-  if (status === "loading") {
+  if (isLoading) {
     return <Loading />;
   }
 
-  if (status === "error") {
-    return <p className="text-4xl text-red-500">Error ....</p>;
+  if (isError) {
+    return toast.error(`${error?.message}`);
   }
 
   return (
@@ -37,7 +40,6 @@ const AvailableApt = ({ date }) => {
           Available Services on {format(date, "PP")}.
         </SectionTitle>
       )}
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-6">
         {services.map((service) => (
           <Service
@@ -49,7 +51,12 @@ const AvailableApt = ({ date }) => {
         ))}
       </div>
       {treatment && (
-        <Modal date={date} treatment={treatment} setTreatment={setTreatment} />
+        <Modal
+          date={date}
+          treatment={treatment}
+          setTreatment={setTreatment}
+          refetch={refetch}
+        />
       )}
     </section>
   );
