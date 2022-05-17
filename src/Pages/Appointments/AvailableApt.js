@@ -10,6 +10,7 @@ import { toast } from "react-hot-toast";
 const AvailableApt = ({ date }) => {
   const [treatment, setTreatment] = useState(null);
 
+  console.log(date);
   const {
     data: services,
     isLoading,
@@ -18,7 +19,7 @@ const AvailableApt = ({ date }) => {
     refetch,
   } = useQuery(["available", date], () =>
     fetch(
-      `https://caring-doctors-portal.herokuapp.com//available?date=${format(
+      `https://caring-doctors-portal.herokuapp.com/available?date=${format(
         date,
         "PP"
       )}`

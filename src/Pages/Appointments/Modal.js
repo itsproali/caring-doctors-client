@@ -20,7 +20,7 @@ const Modal = ({ date, treatment, setTreatment, refetch }) => {
       patientId: user.uid,
     };
 
-    fetch("https://caring-doctors-portal.herokuapp.com//booking", {
+    fetch("https://caring-doctors-portal.herokuapp.com/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -15,7 +15,9 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./Pages/Shared/ScrollToTop";
 import Testimonials from "./Pages/Home/Testimonial/Testimonials";
-
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyAppointment from "./Pages/Dashboard/MyAppointment";
+import MyReview from "./Pages/Dashboard/MyReview";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +42,17 @@ function App() {
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard></Dashboard>
+              </RequireAuth>
+            }
+          >
+            <Route index element={<MyAppointment />} />
+            <Route path="myreview" element={ <MyReview/>}/>
+          </Route>
           <Route path="/loading" element={<Loading />}></Route>
         </Routes>
         <Footer />

@@ -9,17 +9,17 @@ import "./Navbar.css";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const controlNavbar = () => {
-    if (typeof window !== "undefined") {
-      if (window.scrollY > lastScrollY) {
-        setShow(true);
-      } else {
-        setShow(false);
-      }
-      setLastScrollY(window.scrollY);
-    }
-  };
   useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== "undefined") {
+        if (window.scrollY > lastScrollY) {
+          setShow(true);
+        } else {
+          setShow(false);
+        }
+        setLastScrollY(window.scrollY);
+      }
+    };
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", controlNavbar);
       return () => {
@@ -132,11 +132,11 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/">Settings</Link>
+                  <Link to="/dashboard">Dashboard</Link>
                 </li>
                 <li>
                   <button
-                    className="btn btn-accent btn-sm text-white"
+                    className="btn btn-accent btn-sm mt-2 text-white"
                     onClick={() => signOut(auth)}
                   >
                     Logout
