@@ -29,6 +29,18 @@ const Dashboard = () => {
             My Review
           </Link>
         </li>
+        <li>
+          <Link
+            to="/dashboard/users"
+            className={`mx-2 rounded-full btn btn-sm ${
+              location.pathname === "/dashboard/users"
+                ? "btn-primary"
+                : "btn-outline"
+            }`}
+          >
+            All Users
+          </Link>
+        </li>
       </ul>
       <Outlet />
     </div>

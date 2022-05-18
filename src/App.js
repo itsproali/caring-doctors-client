@@ -18,6 +18,7 @@ import Testimonials from "./Pages/Home/Testimonial/Testimonials";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyAppointment from "./Pages/Dashboard/MyAppointment";
 import MyReview from "./Pages/Dashboard/MyReview";
+import Users from "./Pages/Dashboard/Users";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ function App() {
           >
             <Route index element={<MyAppointment />} />
             <Route path="myreview" element={ <MyReview/>}/>
+            <Route path="users" element={ <Users/>}/>
           </Route>
           <Route path="/loading" element={<Loading />}></Route>
         </Routes>

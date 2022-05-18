@@ -5,7 +5,7 @@ const useToken = (user) => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/user/${user?.user?.uid}`, {
+      fetch(`https://caring-doctors-portal.herokuapp.com/user/${user?.user?.uid}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

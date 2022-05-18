@@ -15,13 +15,16 @@ const MyAppointment = () => {
   const { data, isLoading, isError, error } = useQuery(
     ["myAppointment", patientId],
     () =>
-      fetch(`http://localhost:5000/myappointment?patientId=${patientId}`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }).then((res) => {
+      fetch(
+        `https://caring-doctors-portal.herokuapp.com/myappointment?patientId=${patientId}`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      ).then((res) => {
         if (res.status === 401 || res.status === 403) {
           toast.error(`${res.statusText} Access. Please LogIn Again`);
           signOut(auth);
@@ -41,9 +44,8 @@ const MyAppointment = () => {
     toast.error(`${error.message}`);
   }
 
-  console.log(data.status);
   return (
-    <div>
+    <div className="my-8">
       <h1 className="my-2 text-2xl text-accent">
         My Appointment : {data?.length}
       </h1>
