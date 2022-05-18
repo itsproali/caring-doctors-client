@@ -10,7 +10,6 @@ import { toast } from "react-hot-toast";
 const AvailableApt = ({ date }) => {
   const [treatment, setTreatment] = useState(null);
 
-  console.log(date);
   const {
     data: services,
     isLoading,

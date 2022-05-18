@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 
 const Modal = ({ date, treatment, setTreatment, refetch }) => {
   const [user] = useAuthState(auth);
-  const { _id, title, slots } = treatment;
+  const { _id, title, available } = treatment;
 
   const handleBooking = (e) => {
     e.preventDefault();
@@ -29,7 +29,6 @@ const Modal = ({ date, treatment, setTreatment, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.success) {
           toast.success(`Booking Confirmed for ${data.booking.treatmentName}`);
         } else {
@@ -86,7 +85,7 @@ const Modal = ({ date, treatment, setTreatment, refetch }) => {
               id="slot"
               className="select w-full font-medium text-lg my-2 border-2 border-gray-300 focus:border-secondary focus:outline-none"
             >
-              {slots.map((slot, index) => (
+              {available.map((slot, index) => (
                 <option value={slot} key={index}>
                   {slot}
                 </option>

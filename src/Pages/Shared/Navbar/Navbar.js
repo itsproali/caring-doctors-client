@@ -7,6 +7,7 @@ import "../Shared.css";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
   const [show, setShow] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   useEffect(() => {
@@ -28,7 +29,11 @@ const Navbar = () => {
     }
   }, [lastScrollY]);
 
-  const [user] = useAuthState(auth);
+  const logOut = () => {
+    signOut(auth);
+    localStorage.removeItem("accessToken");
+  };
+
   const navItem = (
     <>
       <li>
@@ -137,7 +142,7 @@ const Navbar = () => {
                 <li>
                   <button
                     className="btn btn-accent btn-sm mt-2 text-white"
-                    onClick={() => signOut(auth)}
+                    onClick={logOut}
                   >
                     Logout
                   </button>
