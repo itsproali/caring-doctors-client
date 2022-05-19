@@ -122,7 +122,7 @@ const Navbar = () => {
                   {user.photoURL ? (
                     <img src={user.photoURL} alt="user" />
                   ) : (
-                    <p className="text-3xl">{user.displayName.slice(0, 1)}</p>
+                    <p className="text-3xl">{user?.displayName?.slice(0, 1)}</p>
                   )}
                 </div>
               </label>
