@@ -19,6 +19,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyAppointment from "./Pages/Dashboard/MyAppointment";
 import MyReview from "./Pages/Dashboard/MyReview";
 import Users from "./Pages/Dashboard/Users";
+import RequireAdmin from "./hooks/RequireAdmin";
 
 const queryClient = new QueryClient();
 
@@ -52,8 +53,16 @@ function App() {
             }
           >
             <Route index element={<MyAppointment />} />
-            <Route path="myreview" element={ <MyReview/>}/>
-            <Route path="users" element={ <Users/>}/>
+            <Route path="myreview" element={<MyReview />} />
+            <Route
+              path="users"
+              element={
+                <RequireAdmin>
+                  {" "}
+                  <Users />
+                </RequireAdmin>
+              }
+            />
           </Route>
           <Route path="/loading" element={<Loading />}></Route>
         </Routes>

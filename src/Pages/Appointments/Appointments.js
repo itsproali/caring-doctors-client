@@ -8,7 +8,7 @@ const Appointments = () => {
   return (
     <div>
       <AptBanner date={date} setDate={setDate} />
-      <AvailableApt date={date} />
+      {date && <AvailableApt date={date} />}
     </div>
   );
 };
