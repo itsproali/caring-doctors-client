@@ -20,6 +20,7 @@ import MyAppointment from "./Pages/Dashboard/MyAppointment";
 import MyReview from "./Pages/Dashboard/MyReview";
 import Users from "./Pages/Dashboard/Users";
 import RequireAdmin from "./hooks/RequireAdmin";
+import AddDoctor from "./Pages/Dashboard/AddDoctor";
 
 const queryClient = new QueryClient();
 
@@ -58,8 +59,15 @@ function App() {
               path="users"
               element={
                 <RequireAdmin>
-                  {" "}
                   <Users />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="add-doctor"
+              element={
+                <RequireAdmin>
+                  <AddDoctor />
                 </RequireAdmin>
               }
             />

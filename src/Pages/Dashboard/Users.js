@@ -55,7 +55,7 @@ const Users = () => {
                 <td>{user?.email}</td>
                 <td>{user?.role}</td>
                 <td>
-                  <div className="dropdown dropdown-end">
+                  <div className="dropdown dropdown-top dropdown-end">
                     <label
                       tabIndex="0"
                       className="btn btn-circle btn-primary btn-sm avatar p-2"
