@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import Loading from "../Shared/Loading";
 
 const AddDoctor = () => {
+  const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const {
     register,
@@ -13,10 +16,56 @@ const AddDoctor = () => {
   fetch("https://caring-doctors-portal.herokuapp.com/categories")
     .then((res) => res.json())
     .then((data) => setCategories(data));
+
+  // ad0433ded1d1e3a975fb04874b910948
+  const imgbbKey = "ad0433ded1d1e3a975fb04874b910948";
+
   const onSubmit = async (data) => {
-    console.log(data);
-    reset();
+    setLoading(true);
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    await fetch(`https://api.imgbb.com/1/upload?key=${imgbbKey}`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.success) {
+          console.log(result.data.url);
+          const img = result.data.url;
+          const doctor = {
+            name: data.name,
+            email: data.email,
+            category: data.category,
+            img,
+          };
+          // Add Doctor To Database
+          fetch(`https://caring-doctors-portal.herokuapp.com/add-doctor`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(doctor),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              if (inserted.insertedId) {
+                setLoading(false);
+                toast.success("Doctor Added Successfully");
+              }
+            });
+          reset();
+        }
+      });
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className="flex min-h-screen items-center justify-center my-4">
       <div className="card w-full sm:w-96 bg-base-100 shadow-xl border">
@@ -98,11 +147,17 @@ const AddDoctor = () => {
                 ))}
               </select>
             </div>
-            <div className="my-6">
+
+            {/* Image */}
+            <div className="form-control my-6">
               <label className="label">
-                <span className="label-text">Select Image</span>
+                <span className="label-text">Upload Image</span>
               </label>
-              <input type="file" className="" {...register("email")} />
+              <input
+                type="file"
+                className="cursor pointer w-full"
+                {...register("image")}
+              />
             </div>
 
             <input
