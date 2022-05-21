@@ -17,8 +17,7 @@ const AddDoctor = () => {
     .then((res) => res.json())
     .then((data) => setCategories(data));
 
-  // ad0433ded1d1e3a975fb04874b910948
-  const imgbbKey = "ad0433ded1d1e3a975fb04874b910948";
+  const imgbbKey = process.env.REACT_APP_imgbbKey;
 
   const onSubmit = async (data) => {
     setLoading(true);
