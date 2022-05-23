@@ -12,7 +12,7 @@ const Dashboard = () => {
     <div className="parent mt-20">
       <h1 className="text-4xl text-center text-accent mb-6">Dashboard</h1>
       <ul className="flex justify-center flex-wrap">
-        <li>
+        <li className="my-2">
           <Link
             to="/dashboard"
             className={`mx-2 rounded-full btn btn-sm ${
@@ -22,7 +22,7 @@ const Dashboard = () => {
             My Appointment
           </Link>
         </li>
-        <li>
+        <li className="my-2">
           <Link
             to="/dashboard/myreview"
             className={`mx-2 rounded-full btn btn-sm ${
@@ -36,7 +36,7 @@ const Dashboard = () => {
         </li>
         {admin && (
           <>
-          <li>
+          <li className="my-2">
             <Link
               to="/dashboard/users"
               className={`mx-2 rounded-full btn btn-sm ${
@@ -48,7 +48,7 @@ const Dashboard = () => {
               All Users
             </Link>
           </li>
-          <li>
+          <li className="my-2">
             <Link
               to="/dashboard/add-doctor"
               className={`mx-2 rounded-full btn btn-sm ${
@@ -58,6 +58,18 @@ const Dashboard = () => {
               }`}
             >
               Add Doctor
+            </Link>
+          </li>
+          <li className="my-2">
+            <Link
+              to="/dashboard/manage-doctors"
+              className={`mx-2 rounded-full btn btn-sm ${
+                location.pathname === "/dashboard/manage-doctors"
+                  ? "btn-primary"
+                  : "btn-outline btn-primary"
+              }`}
+            >
+              Manage Doctors
             </Link>
           </li>
           </>

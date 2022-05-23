@@ -17,7 +17,7 @@ const Users = () => {
   }
 
   const handleAdmin = (uid, role) => {
-    fetch(`https://caring-doctors-portal.herokuapp.com/user/role/${uid}`, {
+    fetch(`http://localhost:5000/user/role/${uid}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -32,7 +32,7 @@ const Users = () => {
         }
         return res.json();
       })
-      .then((data) => console.log(data));
+      .then((data) => toast.success(`Successfully Added as  ${role}`));
   };
   return (
     <div className="my-8">

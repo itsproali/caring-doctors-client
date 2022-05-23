@@ -21,6 +21,7 @@ import MyReview from "./Pages/Dashboard/MyReview";
 import Users from "./Pages/Dashboard/Users";
 import RequireAdmin from "./hooks/RequireAdmin";
 import AddDoctor from "./Pages/Dashboard/AddDoctor";
+import ManageDoctors from "./Pages/Dashboard/ManageDoctors";
 
 const queryClient = new QueryClient();
 
@@ -68,6 +69,14 @@ function App() {
               element={
                 <RequireAdmin>
                   <AddDoctor />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="manage-doctors"
+              element={
+                <RequireAdmin>
+                  <ManageDoctors />
                 </RequireAdmin>
               }
             />
